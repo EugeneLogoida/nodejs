@@ -1,0 +1,156 @@
+<h1>HTTP Модулі Node.js</h1>
+<ng-container *ngIf="currUser.lessonsCompleted.includes('http-module')">
+    <h3 class="marg">Ви пройшли цей урок</h3>
+</ng-container>
+<div class="route-btn marg">
+    <a routerLink="/modules" class="button">Попередня сторінка</a>
+    <a routerLink="/file-system" class="button" >Наступна сторінка</a>
+</div>
+<div class="marg">
+    <div>
+        <h2>Вбудований HTTP модуль</h2>
+        <p>Node.js має вбудований модуль під назвою HTTP, який дозволяє Node.js передавати дані через протокол передачі гіпертексту (HTTP).</p>
+        <p class="marg">Щоб включити модуль HTTP, використовуйте метод <b>require()</b>:</p>
+        <div class="example-field marg">
+            
+            <div class="code-field ">
+                <p>var http = require('http');</p>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div>
+    <h2>Node.js як вебсервер</h2>
+    <p>
+        Модуль HTTP може створити сервер HTTP, який прослуховує порти сервера та надсилає відповідь клієнту.
+    </p>
+    <p class="marg">Використовуйте метод <b>createServer()</b>, щоб створити сервер HTTP:</p>
+
+    <div class="example-field marg">
+        <h2>Приклад</h2>
+        
+        <div class="code-field ">
+            <p>var http = require('http');</p>
+            
+            <span>{{ 'http.createServer(function (req, res) { ' }}</span>
+            <span>{{ "&nbsp;res.write('Hello World!'); "}}</span>
+            <span>{{ "&nbsp;res.end(); "}}</span>
+            <span>{{ '}).listen(8080); '}}</span>
+        </div>
+        <a target="_blank" href="https://stackblitz.com/edit/node-fauw7s?file=index.js" class="button" >Запустити в StackBlitz</a>
+    </div>
+    <p>Функція, передана в метод <b>http.createServer()</b>, буде виконана, коли хтось спробує отримати доступ до комп’ютера через порт 8080.</p>
+    <p class="marg">Збережіть наведений вище код у файлі під назвою "demo_http.js" та запустіть файл:</p>
+    <div class="example-field marg">
+        <h2>Ініціювати demo_http.js:</h2>
+        <div class="code-field-black ">
+            <p>C:\Users\Your Name>node demo_http.js</p>
+        </div>
+    </div>
+    <p>Якщо ви виконали ті самі кроки на своєму комп’ютері, ви побачите той самий результат, що й у прикладі: <a href="http://localhost:8080" target="_blank" rel="noopener noreferrer"> http://localhost:8080</a></p>
+</div>
+<div>
+    <h2>Додайте заголовок HTTP</h2>
+    <p class="marg">
+        Якщо відповідь від HTTP-сервера має відображатися як HTML, ви повинні включити HTTP-заголовок із правильним типом вмісту:
+    </p>
+
+    <div class="example-field marg">
+        <h2>Приклад</h2>
+        
+        <div class="code-field ">
+            <p>var http = require('http');</p>
+            
+            <span>{{ 'http.createServer(function (req, res) { ' }}</span>
+            <span>{{ "&nbsp;res.writeHead(200, {'Content-Type': 'text/html'}); "}}</span>
+            <span>{{ "&nbsp;res.write('Hello World!'); "}}</span>
+            <span>{{ "&nbsp;res.end(); "}}</span>
+            <span>{{ '}).listen(8080); '}}</span>
+        </div>
+        <a target="_blank" href="https://stackblitz.com/edit/node-ddrbz7?file=index.js" class="button" >Запустити в StackBlitz</a>
+    </div>
+    <p class="marg">Перший аргумент методу <b>res.writeHead()</b> – це код статусу, 200 означає, що все гаразд, другий аргумент – об’єкт із заголовками відповіді.</p>
+</div>
+<div>
+    <h2>Прочитати рядок запиту</h2>
+    <p>Функція, передана в http.createServer(), має аргумент req, який представляє запит від клієнта як об’єкта (об’єкт http.IncomingMessage).</p>
+    <p class="marg">
+        Цей об’єкт має властивість "url", який містить частину URL-адреси, яка йде після доменного імені:
+    </p>
+
+    <div class="example-field marg">
+        <h2>demo_http_url.js</h2>
+        
+        <div class="code-field ">
+            <p>var http = require('http');</p>
+            
+            <span>{{ 'http.createServer(function (req, res) { ' }}</span>
+            <span>{{ "&nbsp;res.writeHead(200, {'Content-Type': 'text/html'}); "}}</span>
+            <span>{{ "&nbsp;res.write(req.url); "}}</span>
+            <span>{{ "&nbsp;res.end(); "}}</span>
+            <span>{{ '}).listen(8080); '}}</span>
+        </div>
+        
+    </div>
+    <p class="marg">Збережіть наведений вище код у файлі "demo_http_url.js" і запустіть файл:</p>
+    <div class="example-field marg">
+        
+        <h2>Ініціювати demo_http_url.js:</h2>
+        <div class="code-field-black ">
+           <p>C:\Users\Your Name>node demo_http_url.js</p>
+            
+        </div>
+    </div>
+    <p>Якщо ви виконали ті самі кроки на своєму комп’ютері, ви повинні побачити два різні результати під час відкриття цих двох адрес:</p>
+    <p><a href="http://localhost:8080/summer" target="_blank" rel="noopener noreferrer">http://localhost:8080/summer</a></p>
+    <p>Дасть результат <b>/summer</b></p>
+    <p><a href="http://localhost:8080/winter" target="_blank" rel="noopener noreferrer">http://localhost:8080/summer</a></p>
+    <p>Дасть результат <b>/winter</b></p>
+</div>
+
+<div>
+    <h2>Розділіть рядок запиту</h2>
+    
+    <p class="marg">
+        Існують вбудовані модулі для легкого розділення рядка запиту на читабельні частини, як-от модуль URL.
+    </p>
+
+    <div class="example-field marg">
+        <h2>Приклад</h2>
+        <h3>Розділіть рядок запиту на читабельні частини</h3>
+        
+        <div class="code-field ">
+            <span>var http = require('http');</span>
+            <p>var url = require('url');</p>
+            
+            <span>{{ 'http.createServer(function (req, res) { ' }}</span>
+            <span>{{ "&nbsp;res.writeHead(200, {'Content-Type': 'text/html'}); "}}</span>
+            <span>{{ "&nbsp;var q = url.parse(req.url, true).query; "}}</span>
+            <span>{{ "&nbsp;var txt = q.year + ' ' + q.month; "}}</span>
+            <span>{{ "&nbsp;res.end(txt); "}}</span>
+            <span>{{ '}).listen(8080); '}}</span>
+        </div>
+        <a target="_blank" href="https://stackblitz.com/edit/node-ffoubl?file=index.js" class="button" >Запустити в StackBlitz</a>
+    </div>
+    <p class="marg">Збережіть наведений вище код у файлі "demo_querystring.js" і запустіть файл:</p>
+    <div class="example-field marg">
+        
+        <h2>Ініціювати demo_querystring.js:</h2>
+        <div class="code-field-black ">
+           <p>C:\Users\Your Name>node demo_querystring.js</p>
+            
+        </div>
+    </div>
+    <p>Адреса:</p>
+    <p><a href="http://localhost:8080/?year=2023&month=August" target="_blank" rel="noopener noreferrer">http://localhost:8080/?year=2017&month=July</a></p>
+    <p class="marg">Дасть результат <b>2023 August</b></p>
+    
+</div>
+
+<div class="route-btn marg">
+    <a routerLink="/modules" class="button">Попередня сторінка</a>
+    <a routerLink="/file-system" class="button" (click)="nextPage()">Наступна сторінка</a>
+</div>

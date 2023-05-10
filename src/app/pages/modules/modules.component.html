@@ -1,0 +1,90 @@
+<h1>Модулі Node.js</h1>
+<ng-container *ngIf="currUser.lessonsCompleted.includes('modules')">
+    <h3 class="marg">Ви пройшли цей урок</h3>
+</ng-container>
+<div class="route-btn marg">
+    <a routerLink="/get-started" class="button">Попередня сторінка</a>
+    <a routerLink="/http-module" class="button" >Наступна сторінка</a>
+</div>
+<div class="marg">
+    <h2>Що таке модуль у Node.js?</h2>
+    <p>Розглядайте модулі так само як і бібліотеки JavaScript.</p>
+    <p>Набір функцій, які ви хочете включити у свою програму.</p>
+</div>
+<div class="marg">
+    <h2>Вбудовані модулі</h2>
+    <p>Node.js має набір вбудованих модулів, які ви можете використовувати без подальшої установки.</p>
+    <p>На офіційному сайті ви зможете знайти та ознайомитись із повним списком модулів.</p>
+</div>
+<div>
+    <h2>Включити модулі</h2>
+    <p class="marg">Щоб включити модуль, використовуйте функцію <b>require()</b> з назвою модуля:</p>
+    <div class="example-field marg">
+        
+        <div class="code-field ">
+            <p>var http = require('http');</p>
+        </div>
+        
+        
+    </div>
+    <p class="marg">Тепер ваша програма має доступ до модуля HTTP і може створити сервер:</p>
+    <div class="example-field marg">
+        <div class="code-field ">
+            <span>{{ 'http.createServer(function (req, res) { ' }}</span>
+            <span>{{ "&nbsp;res.writeHead(200, {'Content-Type': 'text/plain'}); "}}</span>
+            <span>{{ "&nbsp;res.end('Hello World!'); "}}</span>
+            <span>{{ '}).listen(8080); '}}</span>
+        </div>
+        
+        
+    </div>
+</div>
+<div class="marg">
+    <h2>Створення власного модуля</h2>
+    <p>Ви можете створити власні модулі та легко включити їх у свої програми.</p>
+    <p class="marg">Наступний приклад створює модуль, який повертає об’єкт дати та часу:</p>
+    <div class="example-field marg">
+        
+        <div class="code-field ">
+            <span>{{ 'exports.myDateTime = function () {' }}</span>
+            <span>{{ "&nbsp;return Date(); "}}</span>
+            <span>{{ '}; '}}</span>
+        </div>
+    </div>
+    <p>Використовуйте ключове слово <b>exports</b>, щоб зробити властивості та методи доступними поза файлом модуля.</p>
+    <p>Збережіть наведений вище код у файлі "index.js"</p>
+</div>
+<div class="marg">
+    <h2>Включити власний модуль</h2>
+    <p>Тепер ви можете включити та використовувати модуль у будь-який із ваших файлів Node.js</p>
+    <div class="example-field marg">
+        
+        <h2>index.js</h2>
+        <h3>Використовуйте модуль "index" у файлі Node.js:</h3>
+        <div class="code-field ">
+            <span>var http = require('http');</span>
+            <p>var dt = require('./index');</p>
+            <span>{{ 'http.createServer(function (req, res) { ' }}</span>
+            <span>{{ "&nbsp;res.writeHead(200, {'Content-Type': 'text/html'}); "}}</span>
+            <span>{{ "&nbsp;res.write('Дата і час зараз: ' + dt.myDateTime()); "}}</span>
+            <span>{{ "&nbsp;res.end(); "}}</span>
+            <span>{{ '}).listen(8080); '}}</span>
+        </div>
+        <a target="_blank" href="https://stackblitz.com/edit/node-egzhxv?file=new.js" class="button" >Запустити в StackBlitz</a>
+        
+    </div>
+    <p>Зауважте, що ми використовуємо <b>./</b> для пошуку модуля, це означає, що модуль розташований у тій самій теці, що і файл Node.js.</p>
+    <p>Збережіть наведений вище код у файлі, який називається "new.js", та ініціюйте файл:</p>
+    <div class="example-field marg">
+        
+        <h2>Ініціювати new.js:</h2>
+        <div class="code-field-black ">
+           <p>C:\Users\Your Name>node demo_module.js</p>
+            
+        </div>
+    </div>
+</div>
+<div class="route-btn marg">
+    <a routerLink="/get-started" class="button">Попередня сторінка</a>
+    <a routerLink="/http-module" class="button" (click)="nextPage()">Наступна сторінка</a>
+</div>

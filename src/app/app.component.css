@@ -1,0 +1,10 @@
+
+.main{
+    display: flex;
+}
+.sidebar{
+    width: 20%;
+}
+.route{
+    width: 80%;
+}

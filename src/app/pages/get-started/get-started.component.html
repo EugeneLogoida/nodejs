@@ -1,0 +1,67 @@
+<h1>Початок роботи з Node.js</h1>
+<ng-container *ngIf="currUser.lessonsCompleted.includes('get-started')">
+    <h3 class="marg">Ви пройшли цей урок</h3>
+</ng-container>
+<div class="route-btn marg">
+    <a routerLink="/intro"class="button">Попередня сторінка</a>
+    <a routerLink="/modules" class="button" >Наступна сторінка</a>
+</div>
+<div class="marg">
+    <h2>Завантаження Node.js</h2>
+    <p>На офіційному вебсайті Node.js є інструкції зі встановлення Node.js: <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer">https://nodejs.org</a></p>
+</div>
+<div>
+    <h2>Початок роботи</h2>
+    <p class="marg">Після того, як ви завантажили та встановили Node.js на своєму комп’ютері, давайте спробуємо відобразити "Hello World" у веб-браузері.</p>
+    <p class="marg">Створіть файл Node.js під назвою "myfirst.js" і додайте наступний код:</p>
+    <div class="example-field marg">
+        
+        <h2>index.js</h2>
+        <div class="code-field ">
+            <p>var http = require('http');</p>
+            <span>{{ 'http.createServer(function (req, res) { ' }}</span>
+            <span>{{ "&nbsp;res.writeHead(200, {'Content-Type': 'text/plain'}); "}}</span>
+            <span>{{ "&nbsp;res.end('Hello World!'); "}}</span>
+            <span>{{ '}).listen(8080); '}}</span>
+        </div>
+        <a target="_blank" href="https://stackblitz.com/edit/node-5hfz6f?file=index.js" class="button" >Запустити в StackBlitz</a>
+        
+    </div>
+    <p class="marg">Збережіть файл на своєму комп’ютері. Нехай цей шлях: C:\Users\Your Name\index.js</p>
+    <p class="marg">Код повідомляє комп’ютеру написати "Hello World!" якщо хтось (наприклад, веб-браузер) намагається отримати доступ до вашого комп’ютера через порт 8080.</p>
+</div>
+<div class="marg">
+    <h2>Інтерфейс командного рядка</h2>
+    <p>Файли Node.js потрібно ініціювати в "інтерфейсі командного рядка" програми вашого комп’ютера. </p>
+    <p>Як відкрити інтерфейс командного рядка на вашому комп’ютері, залежить від операційної системи. Для користувачів Windows натисніть кнопку "Пуск" і знайдіть "Командний рядок" або просто напишіть "cmd" у полі пошуку.</p>
+    <p>Перейдіть до теки, яка містить файл "index.js", вікно інтерфейсу командного рядка має виглядати приблизно так:</p>
+    <div class="example-field marg">
+        
+        <h2>index.js</h2>
+        <div class="code-field-black ">
+           <p>C:\Users\Your Name>_</p>
+            
+        </div>
+    </div>
+</div>
+<div class="marg">
+    <h2>Запустіть файл Node.js
+    </h2>
+    <p>Файл, який ви щойно створили, має бути ініційований Node.js перед виконанням будь-яких дій.</p>
+    <p>Запустіть інтерфейс командного рядка, напишіть node myfirst.js і натисніть Enter:</p>
+    <div class="example-field marg">
+        
+        <h2>Ініціалізація index.js</h2>
+        <div class="code-field-black ">
+           <p> C:\Users\Your Name>node index.js</p>
+            
+        </div>
+    </div>
+    <p>Тепер ваш комп’ютер працює як сервер!</p>
+    <p>Якщо хтось спробує отримати доступ до вашого комп’ютера через порт 8080, він отримає повідомлення "Hello World!" повідомлення у відповідь!</p>
+    <p>Запустіть веб-браузер і введіть адресу: <a href="http://localhost:8080" target="_blank" rel="noopener noreferrer">http://localhost:8080</a></p>
+</div>
+<div class="route-btn marg">
+    <a routerLink="/intro"class="button">Попередня сторінка</a>
+    <a routerLink="/modules" class="button" (click)="nextPage()">Наступна сторінка</a>
+</div>

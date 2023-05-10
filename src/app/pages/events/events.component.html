@@ -1,0 +1,99 @@
+<h1>Події Node.js</h1>
+<ng-container *ngIf="currUser.lessonsCompleted.includes('events')">
+    <h3 class="marg">Ви пройшли цей урок</h3>
+</ng-container>
+<div class="route-btn marg">
+    <a routerLink="/npm" class="button">Попередня сторінка</a>
+    <a routerLink="/upload-files" class="button">Наступна сторінка</a>
+</div>
+<div class="marg">
+    <p class="marg">
+        Node.js ідеально підходить для програм, керованих подіями.
+    </p>
+    <div>
+        <h2>Події в Node.js</h2>
+        <p>
+            Кожна дія на комп'ютері є подією. Наприклад, коли встановлюється з’єднання або відкривається файл.
+        </p>
+        <p class="marg">
+            Об’єкти в Node.js можуть запускати події, наприклад, об’єкт readStream запускає події під час відкриття та
+            закриття файлу:
+        </p>
+        <div class="example-field marg">
+            <h2>Приклад</h2>
+            <div class="code-field ">
+                <span>var fs = require('fs');</span>
+                <span>var rs = fs.createReadStream('./demofile.txt');</span>
+
+                <span>{{ "rs.on('open', function () {" }}</span>
+                <span>{{ "&nbsp;console.log('The file is open'); "}}</span>
+                <span>{{ "}); "}}</span>
+            </div>
+            <a target="_blank" href="https://stackblitz.com/edit/node-ff8att?file=index.js" class="button">Запустити в
+                StackBlitz</a>
+
+        </div>
+
+    </div>
+</div>
+<div class="marg">
+
+    <h2>Модуль 'Event'</h2>
+    <p>
+        Node.js має вбудований модуль під назвою «Event», де ви можете створювати, активувати та прослуховувати власні
+        події.
+    </p>
+    <p class="marg">
+        Щоб включити вбудований модуль «Event», використовуйте метод <b>require()</b>. Крім того, усі властивості та
+        методи події
+        є екземпляром об’єкта EventEmitter. Щоб отримати доступ до цих властивостей і методів, створіть об’єкт
+        EventEmitter:
+    </p>
+    <div class="example-field marg">
+        <div class="code-field ">
+            <p>var events = require('events');</p>
+            <p>var eventEmitter = new events.EventEmitter();</p>
+
+        </div>
+    </div>
+
+
+</div>
+<div class="marg">
+
+    <h2>EventEmitter</h2>
+    <p>
+        Ви можете призначити обробники подій своїм власним подіям за допомогою об’єкта EventEmitter.
+    </p>
+    <p>
+        У наведеному нижче прикладі ми створили функцію, яка буде виконана, коли буде запущена подія "крик".
+    </p>
+    <p class="marg">
+        Щоб запустити подію, використовуйте метод emit().
+    </p>
+    <div class="example-field marg">
+        <h2>Приклад</h2>
+        <div class="code-field ">
+            <span>var events = require('events');</span>
+            <span>var eventEmitter = new events.EventEmitter();</span>
+            <br>
+            <span>{{ "var myEventHandler = function () {" }}</span>
+            <span>{{ "&nbsp;console.log('Я чую крик!'); "}}</span>
+            <span>{{ "}" }}</span>
+            <br>
+            <span>{{ "eventEmitter.on('крик', myEventHandler); "}}</span>
+            <br>
+            <span>{{ "eventEmitter.emit('крик'); "}}</span>
+        </div>
+        <a target="_blank" href="https://stackblitz.com/edit/node-evxulf?file=index.js" class="button">Запустити в
+            StackBlitz</a>
+
+    </div>
+
+
+</div>
+
+<div class="route-btn marg">
+    <a routerLink="/npm" class="button">Попередня сторінка</a>
+    <a routerLink="/upload-files" class="button" (click)="nextPage()">Наступна сторінка</a>
+</div>

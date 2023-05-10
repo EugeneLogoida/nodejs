@@ -1,0 +1,112 @@
+<h1>Node.js NPM</h1>
+<ng-container *ngIf="currUser.lessonsCompleted.includes('npm')">
+    <h3 class="marg">Ви пройшли цей урок</h3>
+</ng-container>
+<div class="route-btn marg">
+    <a routerLink="/url-module" class="button">Попередня сторінка</a>
+    <a routerLink="/events" class="button">Наступна сторінка</a>
+</div>
+<div class="marg">
+    <div>
+        <h2>Що таке NPM?</h2>
+        <p>
+            NPM — це менеджер пакетів для пакетів Node.js або модулів, які вам потрібно.
+        </p>
+        <p>
+            <a href="https://www.npmjs.com" target="_blank" rel="noopener noreferrer">www.npmjs.com</a> містить тисячі
+            безкоштовних пакетів для завантаження та використання
+        </p>
+        <p class="marg">
+            Програма NPM автоматично встановлюється на вашому комп’ютері під час інсталяції Node.js
+        </p>
+    </div>
+    <div>
+        <h2>Що таке пакет?</h2>
+        <p>
+            Пакет у Node.js містить усі файли, необхідні для модуля
+        </p>
+
+        <p class="marg">
+            Модулі — це бібліотеки JavaScript, які можна включити у свій проект.
+        </p>
+    </div>
+    <div>
+        <h2>Завантаження пакету</h2>
+        <p>
+            Завантаження пакету це дуже простий процес для виконання
+        </p>
+
+        <p>
+            Відкрийте інтерфейс командного рядка та завантажте потрібний пакет.
+        </p>
+        <p class="marg">
+            Наприклад, можна завантажити пакет під назвою "upper-case":
+        </p>
+        <div class="example-field marg">
+            <h2>Завантажити "upper-case":</h2>
+            <div class="code-field-black ">
+                <p>C:\Users\Your Name>npm install upper-case</p>
+            </div>
+        </div>
+        <p>Тепер ви завантажили та встановили свій перший пакет!</p>
+        <p>NPM створює папку з назвою «node_modules», куди буде розміщено пакет. Усі пакети, які ви встановите в
+            майбутньому, будуть розміщені в цій папці.</p>
+        <p>Тепер проект має таку структуру папок:</p>
+        <p class="marg">
+            <b>C:\Users\My Name\node_modules\upper-case</b>
+        </p>
+    </div>
+</div>
+
+<!-- </div> -->
+
+<div>
+    <h2>Використання пакету</h2>
+    <p>
+        Після встановлення пакета він готовий до використання.
+    </p>
+    <p class="marg">
+        Включіть пакет 'upper-case' так само, як ви включаєте будь-який інший модуль:</p>
+    <div class="example-field marg">
+        <div class="code-field ">
+            <p>var uc = require('upper-case');</p>
+        </div>
+    </div>
+    <p class="marg">
+        Створіть файл Node.js, який перетворить вихідні дані "Hello World!" великими літерами:
+    </p>
+    <div class="example-field marg">
+        <div class="code-field ">
+            <span>var http = require('http');</span>
+            <p>var uc = require('upper-case');</p>
+
+            <span>{{ "http.createServer(function (req, res) { " }}</span>
+            <span>{{ "&nbsp;res.writeHead(200, {'Content-Type': 'text/html'}); "}}</span>
+            <span>{{ "&nbsp;res.write(uc.upperCase('Hello World!')); "}}</span>
+            <span>{{ "&nbsp;res.end(); "}}</span>
+            <span>{{ "}).listen(8080); "}}</span>
+
+
+
+        </div>
+        <a target="_blank" href="https://stackblitz.com/edit/node-mbw85t?file=index.js" class="button">Запустити в
+            StackBlitz</a>
+
+    </div>
+
+
+
+    <p class="marg">Збережіть наведений вище код як 'demo_uppercase.js' та запустіть файл:</p>
+    <div class="example-field marg">
+        <h2>Ініціювати demo_fileserver.js:</h2>
+        <div class="code-field-black ">
+            <p>C:\Users\Your Name>node demo_uppercase.js:</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="route-btn marg">
+    <a routerLink="/url-module" class="button">Попередня сторінка</a>
+    <a routerLink="/events" class="button" (click)="nextPage()">Наступна сторінка</a>
+</div>

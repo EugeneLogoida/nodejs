@@ -1,0 +1,20 @@
+<header>
+    <div class="image">
+        <img src="https://cdn.pixabay.com/photo/2015/04/23/17/41/node-js-736399__480.png" alt="" height="70px">
+    </div>
+    <div class="user-info">
+        <ng-container *ngIf="!userAdded">
+            <button class="button" (click)="logout()">Увійти</button>
+        </ng-container>
+        <ng-container *ngIf="userAdded">
+            
+            <circle-progress [percent]=percent [radius]="30" [outerStrokeWidth]="8" [innerStrokeWidth]="0"
+                [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true"
+                [animationDuration]="300" [title]=title [showSubtitle]= false> </circle-progress>
+            <div class="profile"><h3>{{ currUser.fname }} {{ currUser.lname}}</h3></div>
+            <button class="button" (click)="logout()">Вийти з профілю</button>
+        </ng-container>
+
+
+    </div>
+</header>

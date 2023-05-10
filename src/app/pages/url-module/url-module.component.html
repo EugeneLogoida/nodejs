@@ -1,0 +1,143 @@
+<h1>URL Модулі Node.js</h1>
+<ng-container *ngIf="currUser.lessonsCompleted.includes('url-module')">
+    <h3 class="marg">Ви пройшли цей урок</h3>
+</ng-container>
+<div class="route-btn marg">
+    <a routerLink="/file-system" class="button">Попередня сторінка</a>
+    <a routerLink="/npm" class="button" >Наступна сторінка</a>
+</div>
+<div class="marg">
+    <div>
+        <h2>Вбудований URL модуль</h2>
+        <p>URL Модуль розбиває веб-адресу на зчитувані частини.</p>
+        <p class="marg">Щоб включити модуль URL, використовуйте метод <b>require()</b>:</p>
+        <div class="example-field marg">
+            
+            <div class="code-field ">
+                <p>var url = require('url');</p>
+            </div>
+        </div>
+        <p class="marg">
+            Проаналізуйте адресу за допомогою методу <b>url.parse()</b>, і він поверне об’єкт URL-адреси з кожною частиною адреси як властивість:
+        </p>
+        <div class="example-field marg">
+            <h2>Приклад</h2>
+            
+            <div class="code-field ">
+                <p>var url = require('url');</p>
+                <p>var adr = 'http://localhost:8080/default.htm?year=2017&month=february';</p>
+                <p>var q = url.parse(adr, true);</p>
+                <br>
+                <p>{{ "console.log(q.host); //поверне 'localhost:8080' " }}</p>
+                <p>{{ "console.log(q.pathname); //поверне '/default.htm' " }}</p>
+                <p>{{ "console.log(q.search); //поверне '?year=2017&month=february' " }}</p>
+                <br>
+                <p>{{ "var qdata = q.query; //поверне об'єкт: { year: 2017, month: 'february' } " }}</p>
+                <p>{{ "console.log(qdata.month); //поверне 'february' " }}</p>
+                
+            </div>
+            <a target="_blank" href="https://stackblitz.com/edit/node-sh1wpz?file=index.js" class="button" >Запустити в StackBlitz</a>
+        </div>
+    </div>
+    
+</div>
+
+<div>
+    <h2>Node.js файловий сервер</h2>
+    <p>
+        Тепер ми знаємо, як аналізувати рядок запиту, а в попередньому розділі ми дізналися, як змусити Node.js поводитися як файловий сервер. Давайте поєднаємо ці знання та опрацюємо файл, який запитує клієнт.
+    </p>
+    <p class="marg">
+        Створюємо два файли html і збережігаємо їх у тій же папці, що й файли node.js.</p>
+
+    <div class="example-field marg">
+        <h2>summer.html</h2>
+        
+        <div class="code-field ">
+            <p> &lt;html&gt;</p>
+            <p> &lt;body&gt;</p>
+            <p> &lt;h1&gt;Summer&lt;/h1&gt;</p>
+            <p> &lt;p&gt;I love the sun!&lt;/p&gt;</p>
+            <p> &lt;/body&gt;</p>
+            <p> &lt;/html&gt;</p>
+        </div>
+    </div>
+    <div class="example-field marg">
+        <h2>winter.html</h2>
+        
+        <div class="code-field ">
+            <p> &lt;html&gt;</p>
+            <p> &lt;body&gt;</p>
+            <p> &lt;h1&gt;Winter&lt;/h1&gt;</p>
+            <p> &lt;p&gt;I love the snow!&lt;/p&gt;</p>
+            <p> &lt;/body&gt;</p>
+            <p> &lt;/html&gt;</p>
+        </div>
+    </div>
+    <p class="marg">
+        Створіть файл Node.js, який відкриває запитуваний файл і повертає вміст клієнту. Якщо щось піде не так, видасть помилку 404:
+    </p>
+    <div class="example-field marg">
+        <h2>Приклад</h2>
+        
+        <div class="code-field ">
+            <span>var url = require('url');</span>
+            <span>var http = require('http');</span>
+            <p>var fs = require('fs');</p>
+            <br>
+            <span>{{ "http.createServer(function (req, res) { " }}</span>
+            <span>{{ "&nbsp;var q = url.parse(req.url, true); "}}</span>
+            <span>{{ "&nbsp;var filename = '.' + q.pathname; "}}</span>
+            <span>{{ "&nbsp;fs.readFile(filename, function(err, data) { "}}</span>
+            <span>{{ "&nbsp;&nbsp;if (err) { "}}</span>
+            <span>{{ "&nbsp;&nbsp;&nbsp;res.writeHead(404, {'Content-Type': 'text/html'}); "}}</span>
+            <span>{{ "&nbsp;&nbsp;&nbsp; return res.end('404 Not Found'); "}}</span>
+            <span>{{  "&nbsp;&nbsp;res.writeHead(200, {'Content-Type': 'text/html'});  "}}</span>
+            <span>{{ "&nbsp;&nbsp;}  "}}</span>
+            <span>{{ "&nbsp;&nbsp;res.write(data);  "}}</span>
+            <span>{{ "&nbsp;&nbsp;return res.end();  "}}</span>
+            <span>{{ "&nbsp;});  "}}</span>
+            <span >{{ "}).listen(8080); "}}</span>
+            
+            
+            
+        </div>
+        <a target="_blank" href="https://stackblitz.com/edit/node-xhnadh?file=index.js" class="button" >Запустити в StackBlitz</a>
+    </div>
+    <p class="marg">Збережіть наведений вище код та запустіть файл:</p>
+    <div class="example-field marg">
+        <h2>Ініціювати demo_fileserver.js:</h2>
+        <div class="code-field-black ">
+            <p>C:\Users\Your Name>node demo_fileserver.js:</p>
+        </div>
+    </div>
+    <p>Якщо ви виконали ті самі кроки на своєму комп’ютері, ви у вас повинно бути 2 посилання:</p>
+    <p><a href="http://localhost:8080/summer.html" target="_blank" rel="noopener noreferrer"> http://localhost:8080/summer.html</a></p>
+    <div class="example-field marg">
+        <h2>Результат</h2>
+        
+        <div class="code-field ">
+            <h1>Summer</h1>
+            <p>I love the sun!</p>
+            
+        </div>
+        
+    </div>
+    <p><a href="http://localhost:8080/winter.html" target="_blank" rel="noopener noreferrer"> http://localhost:8080/winter.html</a></p>
+    <div class="example-field marg">
+        <h2>Результат</h2>
+        
+        <div class="code-field ">
+            <h1>Winter</h1>
+            <p>I love the snow!</p>
+            
+        </div>
+        
+    </div>
+</div>
+
+
+<div class="route-btn marg">
+    <a routerLink="/file-system" class="button">Попередня сторінка</a>
+    <a routerLink="/npm" class="button" (click)="nextPage()">Наступна сторінка</a>
+</div>

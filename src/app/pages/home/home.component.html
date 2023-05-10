@@ -1,0 +1,42 @@
+<h1>Вивчення Node.js</h1>
+<ng-container *ngIf="currUser.lessonsCompleted.includes('home')">
+    <h3 class="marg">Ви пройшли цей урок</h3>
+</ng-container>
+<div class="route-btn marg">
+    <button class="button">Попередня сторінка</button>
+    <a routerLink="/intro" class="button" >Наступна сторінка</a>
+</div>
+<div>
+    <h2>Методи навчання за прикладом</h2>
+    <p class="marg">Ви можете опрацьовувати код копіюючи його в свій файл та запускаючи його або переходити за кнопкою на StackBlitz і працювати з кодом в середовищі</p>
+    <div class="example-field marg">
+        
+        <h2>Приклад</h2>
+        <div class="code-field ">
+            <p>var http = require('http');</p>
+            <span>{{ 'http.createServer(function (req, res) { ' }}</span>
+            <span>{{ "&nbsp;res.writeHead(200, {'Content-Type': 'text/plain'}); "}}</span>
+            <span>{{ "&nbsp;res.end('Hello World!'); "}}</span>
+            <span>{{ '}).listen(8080); '}}</span>
+        </div>
+        <a target="_blank" href="https://stackblitz.com/edit/node-5hfz6f?file=index.js" class="button" >Запустити в StackBlitz</a>
+            
+    </div>
+</div>
+<div class="marg">
+    <h2>Навчання</h2>
+    <p>Щоб пройти урок вам необхідно в кінці кожного уроку натиснути кнопку "Наступний урок"</p>
+    <p>В шапці біля вашого профілю буде відображено ваш прогрес </p>
+</div>
+<div class="marg">
+    <h2>Завантаження Node.js</h2>
+    <p>Щоб працювати з Node.js в редакторі перейдіть за наступними посиланнями:</p>
+    <p>Завантажити Visual Studio Code: <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">https://code.visualstudio.com/</a></p>
+    <p>Завантажити Node.js: <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer">https://nodejs.org</a></p>
+    <p>Також ви можете працювати в StackBlitz, в якому присутні всі функції для роботи з Node.js</p>
+    
+</div>
+<div class="route-btn marg">
+    <button class="button">Попередня сторінка</button>
+    <a routerLink="/intro" class="button" (click)="nextPage()">Наступна сторінка</a>
+</div>

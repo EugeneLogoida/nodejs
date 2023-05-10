@@ -1,0 +1,160 @@
+<h1>Node.js Завантаження файлів</h1>
+<ng-container *ngIf="currUser.lessonsCompleted.includes('upload')">
+    <h3 class="marg">Ви пройшли цей урок</h3>
+</ng-container>
+<div class="route-btn marg">
+    <a routerLink="/events" class="button">Попередня сторінка</a>
+    <a routerLink="/email" class="button">Наступна сторінка</a>
+</div>
+<div class="marg">
+
+    <h2>
+        Модуль Formidable
+    </h2>
+    <p>
+        Є дуже хороший модуль для роботи з завантаженням файлів, який називається «Formidable».
+    </p>
+    <p class="marg">
+        Модуль Formidable можна завантажити та встановити за допомогою NPM:
+    </p>
+    <div class="example-field marg">
+        <h2>Завантажити "formidable":</h2>
+        <div class="code-field-black ">
+            <p>C:\Users\Your Name>npm install formidable</p>
+        </div>
+    </div>
+    <p class="marg">
+        Після того, як ви завантажили модуль Formidable, ви можете включити його в будь-яку програму:
+    </p>
+    <div class="example-field marg">
+        <div class="code-field ">
+            <p>var formidable = require('formidable');</p>
+        </div>
+    </div>
+    
+</div>
+
+
+<div class="marg">
+    <h2>Завантаження файлів</h2>
+    <p>
+        Пакет у Node.js містить усі файли, необхідні для модуля
+    </p>
+
+    <p class="marg">
+        Модулі — це бібліотеки JavaScript, які можна включити у свій проект.
+    </p>
+
+    
+</div>
+<div class="marg">
+    <h2>Крок 1: Створити форму для завантаження</h2>
+    <p class="marg">
+        Створіть файл Node.js, який записує форму HTML із полем завантаження:
+    </p>
+    <div class="example-field marg">
+        <h2>Приклад</h2>
+        <h3 class="marg">Цей код створює HTML форму</h3>
+        
+        <div class="code-field ">
+            <p>var http = require('http');</p>
+            
+            <p>{{ "http.createServer(function (req, res) {" }}</p>
+            <p>{{ "&nbsp;res.writeHead(200, {'Content-Type': 'text/html'}); "}}</p>
+            <p>{{ "&nbsp;res.write('&lt;form action='fileupload' method='post' enctype='multipart/form-data'>'); "}}</p>
+            <p>{{ "&nbsp;res.write('&lt;input type='file' name='filetoupload'>); "}}</p>
+            <p>{{ "&nbsp;res.write('&lt;input type='submit'>); "}}</p>
+            <p>{{ "&nbsp;res.write('&lt;/form>); "}}</p>
+            <p>{{ "&nbsp;return res.end(); "}}</p>
+            <p>{{ "}).listen(8080); "}}</p>
+        </div>
+
+    </div>
+</div>
+<div class="marg">
+    <h2>Крок 2: Aналіз завантаженого файлу</h2>
+    <p>
+        Включіть модуль Formidable, щоб мати можливість аналізувати завантажений файл, коли він потрапляє на сервер.</p>
+    <p class="marg">
+        Коли файл завантажується та аналізується, він поміщається в тимчасову папку на вашому комп’ютері.
+    </p>
+    <div class="example-field marg">
+        <h2>Приклад</h2>
+        <h3 class="marg">Цей код створює HTML форму</h3>
+        
+        <div class="code-field ">
+            <span>var http = require('http');</span>
+            <p>var formidable = require('formidable');</p>
+            <span>{{ "http.createServer(function (req, res) {" }}</span>
+            <span>{{ "&nbsp;if (req.url == '/fileupload') { "}}</span>
+            <span>{{ "&nbsp;&nbsp;var form = new formidable.IncomingForm(); "}}</span>
+            <span>{{ "&nbsp;&nbsp;form.parse(req, function (err, fields, files) { "}}</span>
+            <span>{{ "&nbsp;&nbsp;&nbsp;res.write('File uploaded'); "}}</span>
+            <span>{{ "&nbsp;&nbsp;&nbsp;res.end(); "}}</span>
+            <span>{{ "&nbsp;&nbsp;}); "}}</span>
+            <span>{{ "&nbsp;} else { "}}</span>
+            <span>{{ "&nbsp;&nbsp;res.writeHead(200, {'Content-Type': 'text/html'}); "}}</span>
+            <span>{{ "&nbsp;&nbsp;res.write('&lt;form action='fileupload' method='post' enctype='multipart/form-data'>'); "}}</span>
+            <span>{{ "&nbsp;&nbsp;res.write('&lt;input type='file' name='filetoupload'>); "}}</span>
+            <span>{{ "&nbsp;&nbsp;res.write('&lt;input type='submit'>); "}}</span>
+            <span>{{ "&nbsp;&nbsp;res.write('&lt;/form>); "}}</span>
+            <span>{{ "&nbsp;&nbsp;return res.end(); "}}</span>
+            <span>{{ "&nbsp;} "}}</span>
+
+            <span>{{ "}).listen(8080); "}}</span>
+        </div>
+
+    </div>
+</div>
+
+<div class="marg">
+    <h2>Крок 3: Збереження файлу</h2>
+    <p>
+        Коли файл успішно завантажується на сервер, він поміщається в тимчасову папку.
+    </p>
+    <p>
+        Шлях до цього каталогу можна знайти в об’єкті «files», який передається як третій аргумент у функції зворотного виклику методу parse().
+    </p>
+    <p class="marg">
+        Щоб перемістити файл у вибрану папку, скористайтеся модулем File System та перейменуйте файл:
+    </p>
+    <div class="example-field marg">
+        <h2>Приклад</h2>
+        <h3 class="marg">Цей код створює HTML форму</h3>
+        
+        <div class="code-field ">
+            <span>var http = require('http');</span>
+            <span>var formidable = require('formidable');</span>
+            <p>var fs = require('fs');</p>
+            <span>{{ "http.createServer(function (req, res) {" }}</span>
+            <span>{{ "&nbsp;if (req.url == '/fileupload') { "}}</span>
+            <span>{{ "&nbsp;&nbsp;var form = new formidable.IncomingForm(); "}}</span>
+            <span>{{ "&nbsp;&nbsp;form.parse(req, function (err, fields, files) { "}}</span>
+            <span>{{ "&nbsp;&nbsp;&nbsp;var oldpath = files.filetoupload.filepath; "}}</span>
+            <span>{{ "&nbsp;&nbsp;&nbsp;var newpath = 'C:/Users/Your Name/' + files.filetoupload.originalFilename; "}}</span>
+            <span>{{ "&nbsp;&nbsp;&nbsp;fs.rename(oldpath, newpath, function (err) { "}}</span>
+            <span>{{ "&nbsp;&nbsp;&nbsp;&nbsp;if (err) throw err; "}}</span>
+            <span>{{ "&nbsp;&nbsp;&nbsp;&nbsp;res.write('File uploaded and moved!'); "}}</span>
+            <span>{{ "&nbsp;&nbsp;&nbsp;&nbsp;res.end "}}</span>
+            <span>{{ "&nbsp;&nbsp;&nbsp;}); "}}</span>
+            <span>{{ "&nbsp;&nbsp;}); "}}</span>
+            <span>{{ "&nbsp;} else { "}}</span>
+            <span>{{ "&nbsp;&nbsp;res.writeHead(200, {'Content-Type': 'text/html'}); "}}</span>
+            <span>{{ "&nbsp;&nbsp;res.write('&lt;form action='fileupload' method='post' enctype='multipart/form-data'>'); "}}</span>
+            <span>{{ "&nbsp;&nbsp;res.write('&lt;input type='file' name='filetoupload'>); "}}</span>
+            <span>{{ "&nbsp;&nbsp;res.write('&lt;input type='submit'>); "}}</span>
+            <span>{{ "&nbsp;&nbsp;res.write('&lt;/form>); "}}</span>
+            <span>{{ "&nbsp;&nbsp;return res.end(); "}}</span>
+            <span>{{ "&nbsp;} "}}</span>
+            <span>{{ "}).listen(8080); "}}</span>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="route-btn marg">
+    <a routerLink="/events" class="button">Попередня сторінка</a>
+    <a routerLink="/email" class="button" (click)="nextPage()">Наступна сторінка</a>
+</div>
+

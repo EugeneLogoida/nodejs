@@ -1,0 +1,25 @@
+<div class="all">
+    <form [formGroup]="signup" (ngSubmit)="signupData(signup)" class="form">
+        <h3>Реєстрація</h3>
+        <div class="form__group field">
+            <label class="form__group field">Ім'я користувача</label>
+            <input type="text" formControlName="fname" name=""  class="form__field">
+        </div>
+        <div class="form__group field">
+            <label class="form__group field">Прізвище користувача</label>
+            <input type="text" formControlName="lname" name="" class="form__field">
+        </div>
+        <div class="form__group field">
+            <label class="form__group field">Пошта користувача</label>
+            <input type="email" formControlName="email" name="" class="form__field">
+        </div>
+        <div class="form__group field">
+            <label class="form__group field">Пароль</label>
+            <input type="password" formControlName="password" name="" class="form__field">
+        </div>
+
+        <span>Вже є аккаунт? <a routerLink="/login">Увійти</a></span>
+        <br>
+        <button class="button">Зарєструватись</button>
+    </form>
+</div>

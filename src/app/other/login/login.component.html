@@ -1,0 +1,20 @@
+<div class="all">
+    <form [formGroup]="login" (ngSubmit)="loginData(login)" class="form">
+        <h3>Вхід</h3>
+        <div class="form__group field">
+            <label class="form__group field">Пошта користувача</label>
+            <input type="text" formControlName="email" name="" class="form__field">
+        </div>
+        <div class="form__group field">
+            <label>Пароль</label>
+            <input type="password" formControlName="password" name=""  class="form__field">
+        </div>
+
+        <span>Створіть новий аккаунт <a routerLink="/sign-up" >Зареєстуватись</a></span>
+        <br>
+        <button class="button">Увійти</button>
+    </form>
+</div>
+
+
+<!-- <p>some text</p> -->

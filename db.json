@@ -1,0 +1,54 @@
+{
+  "signup": [
+    {
+      "fname": "Новий",
+      "lname": "Користувач",
+      "email": "newuser@gmail.com",
+      "password": "newuser",
+      "lessonsCompleted": [
+        "get-started"
+      ],
+      "id": 1
+    },
+    {
+      "fname": "qwe",
+      "lname": "qwe",
+      "email": "qwe@gmail.com",
+      "password": "qwe",
+      "lessonsCompleted": [
+        "home",
+        "intro",
+        "get-started",
+        "modules",
+        "http-module",
+        "file-system",
+        "url-module",
+        "npm",
+        "events",
+        "upload",
+        "email"
+      ],
+      "id": 2
+    },
+    {
+      "fname": null,
+      "lname": null,
+      "email": "admin@gmail.com",
+      "password": "admin123",
+      "lessonsCompleted": [
+        "home",
+        "intro",
+        "get-started",
+        "modules",
+        "http-module",
+        "file-system",
+        "url-module",
+        "npm",
+        "events",
+        "upload",
+        "email"
+      ],
+      "id": 3
+    }
+  ]
+}

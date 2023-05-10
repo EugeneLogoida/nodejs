@@ -1,0 +1,129 @@
+<h1>Node.js Робота з поштою</h1>
+<ng-container *ngIf="currUser.lessonsCompleted.includes('email')">
+    <h3 class="marg">Ви пройшли цей урок</h3>
+</ng-container>
+<div class="route-btn marg">
+    <a routerLink="/upload-files" class="button">Попередня сторінка</a>
+    <button routerLink="" class="button" disabled>Наступна сторінка</button>
+</div>
+<div class="marg">
+    <h2>
+        Модуль Nodemailer
+    </h2>
+    
+    <p>
+        Модуль Nodemailer дозволяє легко надсилати електронні листи з вашого комп’ютера.
+    </p>
+    <p class="marg">
+        Модуль Nodemailer можна завантажити та встановити за допомогою npm:
+    </p>
+    <div class="example-field marg">
+        <h2>Завантажити "nodemailer":</h2>
+        <div class="code-field-black ">
+            <p>C:\Users\Your Name>npm install nodemailer</p>
+        </div>
+    </div>
+    <p class="marg">
+        Після того, як ви завантажили модуль Nodemailer, ви можете включити його в будь-яку програму:
+    </p>
+    <div class="example-field marg">
+        <div class="code-field ">
+            <p>var nodemailer = require('nodemailer');</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="marg">
+    <h2>Надіслати електронний лист</h2>
+    <p>
+        Тепер ви готові надсилати електронні листи зі свого сервера.
+    </p>
+
+    <p class="marg">
+        Щоб надіслати електронний лист, використовуйте ім’я користувача та пароль від вибраного постачальника
+        електронної пошти. Цей приклад покаже вам, як використовувати обліковий запис Gmail для надсилання електронних
+        листів:
+    </p>
+    <div>
+        <div class="example-field marg">
+            <h2>Приклад</h2>
+            <div class="code-field ">
+                <span>var nodemailer = require('nodemailer');</span><br>
+
+                <span>{{ "var transporter = nodemailer.createTransport({" }}</span>
+                <span>{{ "&nbsp; service: 'gmail', "}}</span>
+                <span>{{ "&nbsp; auth: { "}}</span>
+                <span>{{ "&nbsp;&nbsp; user: 'youremail@gmail.com', "}}</span>
+                <span>{{ "&nbsp;&nbsp; user: pass: 'yourpassword' "}}</span>
+                <span>{{ "&nbsp; }"}}</span>
+                <span>{{ "}); "}}</span>
+                <br>
+                <span>{{ "var mailOptions = {" }}</span>
+                <span>{{ "&nbsp; from: 'youremail@gmail.com', "}}</span>
+                <span>{{ "&nbsp; to: 'myfriend@yahoo.com',"}}</span>
+                <span>{{ "&nbsp; subject: 'Sending Email using Node.js',"}}</span>
+                <span>{{ "&nbsp; text: 'That was easy!'"}}</span>
+                <span>{{ "}; "}}</span>
+                <br>
+                <span>{{ "transporter.sendMail(mailOptions, function(error, info){" }}</span>
+                <span>{{ "&nbsp; if (error) { "}}</span>
+                <span>{{ "&nbsp;&nbsp; console.log(error); "}}</span>
+                <span>{{ "&nbsp; } else { "}}</span>
+                <span>{{ "&nbsp;&nbsp; console.log(error); "}}</span>
+                <span>{{ "&nbsp; to: 'myfriend@yahoo.com',"}}</span>
+                <span>{{ "&nbsp;&nbsp; console.log('Email sent: ' + info.response);"}}</span>
+                <span>{{ "&nbsp; text: 'That was easy!'"}}</span>
+                <span>{{ "&nbsp;}; "}}</span>
+                <span>{{ "}); "}}</span>
+            </div>
+    
+        </div>
+        
+    </div>
+    <p class="marg">
+        І це все! Тепер ваш сервер може надсилати електронні листи.
+    </p>
+</div>
+<div class="marg">
+    <h2>Кілька приймачів</h2>
+    <p class="marg">
+        Щоб надіслати електронний лист кільком одержувачам, додайте їх у властивість 'to' об’єкта mailOptions, розділивши їх комами:
+    </p>
+    <div class="example-field marg">
+        <h2>Приклад</h2>
+        <div class="code-field ">
+            <span>{{ "var mailOptions = {" }}</span>
+            <span>{{ "&nbsp; from: 'youremail@gmail.com', "}}</span>
+            <span>{{ "&nbsp; to: 'myfriend@yahoo.com','myotherfriend@yahoo.com', "}}</span>
+            <span>{{ "&nbsp; subject: 'Sending Email using Node.js',"}}</span>
+            <span>{{ "&nbsp; text: 'That was easy!'"}}</span>
+            <span>{{ "}; "}}</span>
+        </div>
+    </div>
+</div>
+<div class="marg">
+    <h2>Надіслати HTML</h2>
+    <p class="marg">
+        Щоб надіслати текст у форматі HTML у своїй електронній пошті, використовуйте властивість "html" замість властивості "text":
+    </p>
+    <div class="example-field marg">
+        <h2>Приклад</h2>
+        <div class="code-field ">
+            <span>{{ "var mailOptions = {" }}</span>
+            <span>{{ "&nbsp; from: 'youremail@gmail.com', "}}</span>
+            <span>{{ "&nbsp; to: 'myfriend@yahoo.com','myotherfriend@yahoo.com', "}}</span>
+            <span>{{ "&nbsp; subject: 'Sending Email using Node.js',"}}</span>
+            <span>{{ "&nbsp; html: '&lt;h1>Welcome&lt;/h1>&lt;p>That was easy!&lt;/p>'"}}</span>
+            <span>{{ "}; "}}</span>
+        </div>
+    </div>
+</div>
+
+<div class="route-btn marg">
+    <a routerLink="/upload-files" class="button">Попередня сторінка</a>
+    <a  class="button" (click)="nextPage()">Завершити навчання</a>
+</div>
+
+
+

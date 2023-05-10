@@ -1,0 +1,257 @@
+<h1>Файлова система Node.js</h1>
+<ng-container *ngIf="currUser.lessonsCompleted.includes('file-system')">
+    <h3 class="marg">Ви пройшли цей урок</h3>
+</ng-container>
+<div class="route-btn marg">
+    <a routerLink="/http-module" class="button">Попередня сторінка</a>
+    <a routerLink="/url-module" class="button" >Наступна сторінка</a>
+</div>
+<div class="marg">
+    <div>
+        <h2>Node.js як файловий сервер</h2>
+        <p>Модуль файлової системи Node.js дозволяє працювати з файловою системою на комп’ютері.</p>
+        <p class="marg">Щоб включити модуль файлової системи, використовуйте метод <b>require()</b>:</p>
+        <div class="example-field marg">
+            
+            <div class="code-field ">
+                <p>var fs = require('fs');</p>
+            </div>
+        </div>
+    </div>
+    <p>Загальне використання для модуля файлової системи:</p>
+    <ul>
+        <li>Зчитувати файли</li>
+        <li>Створювати файли</li>
+        <li>Оновити файли</li>
+        <li>Видалити файли</li>
+        <li>Перейменувати файли</li>
+    </ul>
+</div>
+
+<div>
+    <h2>Зчитування файлів</h2>
+    <p>
+        Метод fs.readFile() використовується для читання файлів на вашому комп’ютері.
+    </p>
+    <p class="marg">Припустімо, що у нас є такий файл HTML (розташований у тій самій теці, що й Node.js):</p>
+
+    <div class="example-field marg">
+        <h2>test.html</h2>
+        
+        <div class="code-field ">
+            <p> &lt;html&gt;</p>
+            <p> &lt;body&gt;</p>
+            <p> &lt;h1&gt;My Header&lt;/h1&gt;</p>
+            <p> &lt;p&gt;My paragraph.&lt;/p&gt;</p>
+            <p> &lt;/body&gt;</p>
+            <p> &lt;/html&gt;</p>
+        </div>
+    </div>
+    <p class="marg">
+        Створіть файл Node.js, який читає файл HTML і повертає вміст:
+    </p>
+    <div class="example-field marg">
+        <h2>Приклад</h2>
+        
+        <div class="code-field ">
+            <p>var http = require('http');</p>
+            <p>var fs = require('fs');</p>
+            
+            <span>{{ 'http.createServer(function (req, res) { ' }}</span>
+            <span>{{ "&nbsp;fs.readFile('demofile1.html', function(err, data) { "}}</span>
+            <span>{{ "&nbsp;&nbsp;res.writeHead(200, {'Content-Type': 'text/html'}); "}}</span>
+            <span>{{ "&nbsp;&nbsp;res.write(data); "}}</span>
+            <span>{{ "&nbsp;&nbsp;return res.end(); "}}</span>
+            <span>{{ "&nbsp;}); "}}</span>
+            <span>{{ '}).listen(8080); '}}</span>
+        </div>
+        <a target="_blank" href="https://stackblitz.com/edit/node-g8egqm?file=index.js" class="button" >Запустити в StackBlitz</a>
+    </div>
+    <p class="marg">Збережіть наведений вище код у файлі під назвою "demo_readfile.js" та запустіть файл:</p>
+    <div class="example-field marg">
+        <h2>Ініціювати demo_readfile.js:</h2>
+        <div class="code-field-black ">
+            <p>C:\Users\Your Name>node demo_readfile.js</p>
+        </div>
+    </div>
+    <p>Якщо ви виконали ті самі кроки на своєму комп’ютері, ви побачите той самий результат, що й у прикладі: <a href="http://localhost:8080" target="_blank" rel="noopener noreferrer"> http://localhost:8080</a></p>
+</div>
+
+
+<div>
+    <h2>Створити файли</h2>
+    <p>Модуль файлової системи має методи для створення нових файлів:</p>
+    <ul>
+        <li>fs.appendFile()</li>
+        <li>fs.open()</li>
+        <li>fs.writeFile()</li>
+    </ul>
+    <p class="marg">
+        Метод fs.appendFile() додає вказаний вміст до файлу. Якщо файл не існує, він буде створений:
+    </p>
+    <div class="example-field marg">
+        <h2>Приклад</h2>
+        <h3>Створіть новий файл за допомогою методу appendFile():</h3>
+        
+        <div class="code-field ">
+            <p>var fs = require('fs');</p>
+            
+            <span>{{ "fs.appendFile('mynewfile1.txt', 'Hello content!', function (err) {" }}</span>
+            <span>{{ "&nbsp;if (err) throw err; "}}</span>
+            <span>{{ "&nbsp;console.log('Збережено!'); "}}</span>
+            
+            <span>{{ '}); '}}</span>
+        </div>
+        <a target="_blank" href="https://stackblitz.com/edit/node-epskhm?file=index.js" class="button" >Запустити в StackBlitz</a>
+    </div>
+    
+    <p class="marg">
+        Метод fs.open() приймає "прапорець" як другий аргумент, якщо прапорець "w" для "запису", указаний файл відкривається для запису. Якщо файл не існує, створюється порожній файл:
+    </p>
+    <div class="example-field marg">
+        <h2>Приклад</h2>
+        <h3>Створіть новий порожній файл за допомогою методу open():</h3>
+        
+        <div class="code-field ">
+            <p>var fs = require('fs');</p>
+            
+            <span>{{ "fs.open('mynewfile2.txt', 'w', function (err, file) {" }}</span>
+            <span>{{ "&nbsp;if (err) throw err; "}}</span>
+            <span>{{ "&nbsp;console.log('Збережено!'); "}}</span>
+            
+            <span>{{ '}); '}}</span>
+        </div>
+        <a target="_blank" href="https://stackblitz.com/edit/node-cmrx56?file=index.js" class="button" >Запустити в StackBlitz</a>
+    </div>
+
+
+    <p class="marg">
+        Метод fs.writeFile() замінює вказаний файл і вміст, якщо він існує. Якщо файл не існує, буде створено новий файл із зазначеним вмістом:
+    </p>
+    <div class="example-field marg">
+        <h2>Приклад</h2>
+        <h3>Створіть новий файл за допомогою методу writeFile():</h3>
+        
+        <div class="code-field ">
+            <span>var fs = require('fs');</span>
+            
+            <span>{{ "fs.writeFile('mynewfile3.txt', 'Hello content!', function (err) {" }}</span>
+            <span >{{ "&nbspif (err) throw err; "}}</span>
+            <span >{{ "&nbspconsole.log('Збережено!'); "}}</span>
+            
+            <span>{{ '}); '}}</span>
+        </div>
+        <a target="_blank" href="https://stackblitz.com/edit/node-g93zk3?file=index.js" class="button" >Запустити в StackBlitz</a>
+    </div>
+</div>
+
+<div>
+    <h2>Оновити файли</h2>
+    <p>Модуль файлової системи має методи для оновлення файлів:</p>
+    <ul>
+        <li>fs.appendFile()</li>
+        <li>fs.writeFile()</li>
+    </ul>
+    <p class="marg">
+        Метод fs.appendFile() додає вказаний вміст у кінець зазначеного файлу:
+    </p>
+    <div class="example-field marg">
+        <h2>Приклад</h2>
+        <h3>Додайте "Це мій текст." до кінця файлу "mynewfile1.txt":</h3>
+        
+        <div class="code-field ">
+            <p>var fs = require('fs');</p>
+            
+            <span>{{ "fs.appendFile('mynewfile1.txt', ' Це мій текст.', function (err) {" }}</span>
+            <span>{{ "&nbsp;if (err) throw err; "}}</span>
+            <span>{{ "&nbsp;console.log('Оновлено!'); "}}</span>
+            
+            <span>{{ '}); '}}</span>
+        </div>
+        <a target="_blank" href="https://stackblitz.com/edit/node-1m8hnu?file=index.js" class="button" >Запустити в StackBlitz</a>
+    </div>
+    
+    <p class="marg">
+        Метод fs.writeFile() замінює вказаний файл і вміст:
+    </p>
+    <div class="example-field marg">
+        <h2>Приклад</h2>
+        <h3>Замінити вміст файлу "mynewfile3.txt":</h3>
+        
+        <div class="code-field ">
+            <p>var fs = require('fs');</p>
+            
+            <span>{{ "fs.writeFile('mynewfile3.txt', 'Це мій текст', function (err) {" }}</span>
+            <span>{{ "&nbsp;if (err) throw err; "}}</span>
+            <span>{{ "&nbsp;console.log('Замінено!'); "}}</span>
+            
+            <span>{{ '}); '}}</span>
+        </div>
+        <a target="_blank" href="https://stackblitz.com/edit/node-vn8dqf?file=index.js" class="button" >Запустити в StackBlitz</a>
+    </div>
+
+
+    
+</div>
+
+<div>
+    <h2>Видалити файли</h2>
+    <p>Щоб видалити файл за допомогою модуля файлової системи, використовуйте метод fs.unlink().
+    </p>
+    <p class="marg">
+        Метод fs.unlink() видаляє вказаний файл:
+    </p>
+    
+    <div class="example-field marg">
+        <h2>Приклад</h2>
+        <h3>Видалити "mynewfile2.txt":</h3>
+        
+        <div class="code-field ">
+            <p>var fs = require('fs');</p>
+            
+            <span>{{ "fs.unlink('mynewfile2.txt', function (err) {" }}</span>
+            <span>{{ "&nbsp;if (err) throw err; "}}</span>
+            <span>{{ "&nbsp;console.log('Файл видалено!'); "}}</span>
+            <span>{{ '}); '}}</span>
+        </div>
+        <a target="_blank" href="https://stackblitz.com/edit/node-eaj5uv?file=index.js" class="button" >Запустити в StackBlitz</a>
+    </div>
+</div>
+<div>
+    <h2>Перейменувати файли</h2>
+    <p>Щоб перейменувати файл за допомогою модуля файлової системи, використовуйте метод fs.rename().
+    </p>
+    <p class="marg">
+        Метод fs.rename() перейменовує вказаний файл:
+    </p>
+    
+    <div class="example-field marg">
+        <h2>Приклад</h2>
+        <h3>Перейменувати "mynewfile1.txt" на "myrenamedfile.txt":</h3>
+        
+        <div class="code-field ">
+            <p>var fs = require('fs');</p>
+            
+            <span>{{ "fs.rename('mynewfile1.txt', 'myrenamedfile.txt', function (err) {" }}</span>
+            <span>{{ "&nbsp;if (err) throw err; "}}</span>
+            <span>{{ "&nbsp;console.log('Файл перейменовано!'); "}}</span>
+            <span>{{ '}); '}}</span>
+        </div>
+        <a target="_blank" href="https://stackblitz.com/edit/node-gfa98v?file=index.js" class="button" >Запустити в StackBlitz</a>
+    </div>
+</div>
+<div>
+    <h2>Завантажити файли</h2>
+    <p>Ви також можете використовувати Node.js для завантаження файлів на свій комп’ютер.
+    </p>
+    <p class="marg">
+       Завантаження файлів буде в наступних уроках
+    </p>
+</div>
+
+
+<div class="route-btn marg">
+    <a routerLink="/http-module" class="button">Попередня сторінка</a>
+    <a routerLink="/url-module" class="button"  (click)="nextPage()">Наступна сторінка</a>
+</div>
+
